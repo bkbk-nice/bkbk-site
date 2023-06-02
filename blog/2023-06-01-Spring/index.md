@@ -245,10 +245,75 @@ aaaa
  
 
 ### 请求参数绑定  
+基本功能 在java servlet Api包中HttpServletRequest参数处理   
+jdk低版本时使用@RequestParam指定对应名以及默认值
+
 
 ### post请求参数乱码处理  
+``` xml
+<filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceRequestEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceResponseEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
-### 日期类型参数的转换  
+```
+
+### 日期类型参数的转换
+class DateConvert:  
+``` js
+public class DateConvert implements Converter<String, Date> {
+
+    @Override
+    public Date convert(String source) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date =simpleDateFormat.parse(source);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return date;
+    }
+} 
+```
+mvc.xml  
+``` xml
+<!--    声明转换器--> 
+    <mvc:annotation-driven  conversion-service="ConversionService"></mvc:annotation-driven> 
+
+    <bean id="ConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.bkbk.config.DateConvert"/>
+            </list>
+        </property>
+    </bean>
+```
+```
+test: http://localhost:8888/test/date?date=2023-06-02
+ @GetMapping("/date")
+    public void show13(Date date){
+        System.out.println(date);
+    } 
+result:
+Fri Jun 02 00:00:00 CST 2023
+```
 
 ### json语法  
 
@@ -668,6 +733,39 @@ public class StudentInterceptor implements HandlerInterceptor {
 效果： 
 ![interceptor](./interceptor.png)
 ### RESTFul开发  
+Restful是一个资源定位及资源操作的风格。不是标准也不是协议，只是一种风格。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。  
 
+功能  
+资源：互联网所有的事物都可以被抽象为资源  
+资源操作：使用POST、DELETE、PUT、GET，使用不同方法对资源进行操作。  
+分别对应 添加、 删除、修改、查询  
 
+传统方式操作资源：通过不同的参数来实现不同的效果！方法单一，post 和 get。  
+http:<span></span>//127.0.0.1/item/queryItem.action?id=1 查询,GET  
+http:<span></span>//127.0.0.1/item/saveItem.action 新增,POST  
+http:<span></span>//127.0.0.1/item/updateItem.action 更新,POST  
+http:<span></span>//127.0.0.1/item/deleteItem.action?id=1 删除,GET    
 
+使用RESTful操作资源 ： 可以通过不同的请求方式来实现不同的效果！如下：请求地址一样，但是功能可以不同！  
+
+http:<span></span>//127.0.0.1/item/1  查询,GET  
+http:<span></span>//127.0.0.1/item  新增,POST  
+http:<span></span>//127.0.0.1/item  更新,PUT  
+http:<span></span>//127.0.0.1/item/1  删除,DELETE  
+ 
+
+**在Spring MVC中可以使用 @PathVariable 注解，让方法参数的值对应绑定到一个URI模板变量上。**  
+``` js
+@Controller
+public class RestFulController {
+    //映射访问路径
+    @RequestMapping("/commit/{p1}/{p2}")
+    public String index(@PathVariable int p1, @PathVariable int p2, Model model){
+        int result=p1+p2;
+        //Sprin MVC 会自动实力化一个Model对象用于向视图中传值
+        model.addAttribute("msg","结果："+result);
+        //返回视图位置
+        return  "test1"; 
+    }
+} 
+```

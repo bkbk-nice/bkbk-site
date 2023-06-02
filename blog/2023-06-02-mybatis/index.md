@@ -8,6 +8,7 @@ tags: [Mybatis]
 
 ##  Mybatis
 [mybatis文档](https://mybatis.net.cn/index.html)  
+[Mybatis-plus](https://www.baomidou.com/) 
 #### 1.环境搭建    
 #### 2.MyBatis框架基本入门    
 #### 3.MyBatis框架接口开发    
