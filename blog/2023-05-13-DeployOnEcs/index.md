@@ -27,4 +27,10 @@ tags: [Springboot,Vue,Ecs]
 7、开启所用的所有端口  
 8、**跨域修改前端后端localhost**   
 
+### 2023-06-02 error log
+ecs中mysql数据清空（？）   
+重新导入数据：  
+create database qssql;  
+source /root/qssql.sql;   
+
 
