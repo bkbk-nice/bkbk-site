@@ -6,6 +6,10 @@ tags: [Algorithm]
 ---
  
 
+
+<!--truncate-->
+
+
 ##  quicksort
 <!-- [mybatis文档](https://mybatis.net.cn/index.html)  
 [Mybatis-plus](https://www.baomidou.com/)  -->

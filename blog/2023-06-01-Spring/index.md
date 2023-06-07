@@ -11,6 +11,9 @@ tags: [Spring]
 # Spring
  
 
+<!--truncate-->
+
+
 ## Spring  
 ### Spring框架IOC和DI  
 略  
