@@ -33,4 +33,7 @@ ecs中mysql数据清空（？）
 create database qssql;  
 source /root/qssql.sql;   
 
+### 2023-06-07 updata log
 
+将root权限设置为localhost   
+ 
