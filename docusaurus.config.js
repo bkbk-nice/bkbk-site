@@ -45,7 +45,12 @@ const config = {
             'https://github.com/bkbk-nice/bkbk-site/tree/main/',
         },
         blog: {
+
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
+          
           showReadingTime: true,
+          // postsPerPage: 'ALL',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
