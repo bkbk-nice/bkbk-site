@@ -2225,6 +2225,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@docusaurus/plugin-sitemap@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@docusaurus/plugin-sitemap@npm:2.4.1"
+  dependencies:
+    "@docusaurus/core": 2.4.1
+    "@docusaurus/logger": 2.4.1
+    "@docusaurus/types": 2.4.1
+    "@docusaurus/utils": 2.4.1
+    "@docusaurus/utils-common": 2.4.1
+    "@docusaurus/utils-validation": 2.4.1
+    fs-extra: ^10.1.0
+    sitemap: ^7.1.1
+    tslib: ^2.4.0
+  peerDependencies:
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+  checksum: aa6728278017c047b4ed1456e349b1a267d85b4bb0c422bb63e59fc28ccb0e286dc66918f44f6ade660e550b047e2b14796c54c96fde6eb69395770cf39cf306
+  languageName: node
+  linkType: hard
+
 "@docusaurus/preset-classic@npm:2.4.0":
   version: 2.4.0
   resolution: "@docusaurus/preset-classic@npm:2.4.0"
@@ -5173,6 +5193,7 @@ __metadata:
   dependencies:
     "@docusaurus/core": 2.4.0
     "@docusaurus/module-type-aliases": 2.4.0
+    "@docusaurus/plugin-sitemap": ^2.4.1
     "@docusaurus/preset-classic": 2.4.0
     "@docusaurus/theme-search-algolia": ^2.4.1
     "@mdx-js/react": ^1.6.22

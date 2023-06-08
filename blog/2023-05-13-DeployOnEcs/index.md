@@ -34,6 +34,15 @@ create database qssql;
 source /root/qssql.sql;   
 
 ### 2023-06-07 updata log
+``` sql title="将root权限设置为localhost"
+use mysql;
+update user set authentication_string='' where user='root';
+flush privileges;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '123456' PASSWORD EXPIRE NEVER; 
+alter user 'root'@'localhost' identified by '123456';
+grant all privileges  on *.*  to "root"@'localhost';
+flush privileges;
+net start mysql
+```
 
-将root权限设置为localhost   
  

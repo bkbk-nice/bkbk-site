@@ -36,7 +36,15 @@ const config = {
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
+       
+      
       ({
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
+        },  
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -63,7 +71,7 @@ const config = {
     ],
   ],
 
-  // themes: ['@docusaurus/theme-search-algolia'], 
+  //  themes: ['@docusaurus/theme-search-algolia'], 
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -142,36 +150,31 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['java'],
       },
-      // algolia: {
-      //   // contextualSearch: true,
-      //   // The application ID provided by Algolia
-      //   appId: 'YOUR_APP_ID',
+      algolia: {
+        // contextualSearch: true,
+        // The application ID provided by Algolia
+        appId: 'WMEGVVS490', 
+        // Public API key: it is safe to commit it
+        apiKey: '6a4af141234079bc50d2a722b74fee90', 
+        indexName: 'bkbk-netlify', 
+        // Optional: see doc section below
+        contextualSearch: true, 
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        externalUrlRegex: 'external\\.com|domain\\.com',
   
-      //   // Public API key: it is safe to commit it
-      //   apiKey: 'YOUR_SEARCH_API_KEY',
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
   
-      //   indexName: 'YOUR_INDEX_NAME',
+        // Optional: Algolia search parameters
+        searchParameters: {},
   
-      //   // Optional: see doc section below
-      //   contextualSearch: true,
-  
-      //   // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      //   externalUrlRegex: 'external\\.com|domain\\.com',
-  
-      //   // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      //   replaceSearchResultPathname: {
-      //     from: '/docs/', // or as RegExp: /\/docs\//
-      //     to: '/',
-      //   },
-  
-      //   // Optional: Algolia search parameters
-      //   searchParameters: {},
-  
-      //   // Optional: path for search page that enabled by default (`false` to disable it)
-      //   searchPagePath: 'search',
-  
-      //   //... other Algolia params
-     //   },
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+   
+       },
     }),
 };
 
