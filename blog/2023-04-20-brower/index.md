@@ -4,8 +4,11 @@ title: Dom render tree
 authors: [bkbk]
 tags: [browser]
 ---
- 
-Dom render tree images:
+  
+:::caution 目录
+**Dom render tree images**     
+::: -->
+<!--truncate-->
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

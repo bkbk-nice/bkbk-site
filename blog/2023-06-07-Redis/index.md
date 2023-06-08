@@ -5,8 +5,21 @@ authors: [bkbk]
 tags: [Redis]
 ---
 
-##  Redis
 
+
+:::info 目录
+**redis介绍**  
+
+**集成springboot**  
+
+**序列化**   
+
+**SpringCache**    
+::: -->
+<!--truncate-->
+
+
+##  Redis介绍
 
 Redis(Remote Dictionary seve)，即远程字典服务，
 是一个开源的使用ANSIC语言纳写、支持网络、可基于内存亦可特久化的日志型、Key-value库，
@@ -21,7 +34,7 @@ Redis特点
 - Redis的应用场景
 https;//www.jianshu.com/p/40dbc78711c8
 
-<!--truncate-->
+ 
 :::info  net
 **本机网络需要配置虚拟机网络适配器并配置网段**   
 :::
@@ -53,7 +66,7 @@ https;//www.jianshu.com/p/40dbc78711c8
 
 
 
- 
+##  Springboot集成Redis
 ``` xml title="导入依赖"
 <dependency>
     <groupId>org.springframework.boot</groupId>

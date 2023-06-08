@@ -4,6 +4,17 @@ title:  Springboot Vue on Ecs
 authors: [bkbk]
 tags: [Springboot,Vue,Ecs]
 ---
+
+
+
+:::info 目录
+**在ECS上部署前后端分离项目**   
+
+**部署流程**    
+::: -->
+<!--truncate-->
+
+
 <!--  
  project address: 8.130.30.42:8080 -->
 
