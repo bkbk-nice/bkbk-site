@@ -15,7 +15,11 @@ tags: [SpringCloud]
 
 **nacos、Ribbon配置**   
 
-**远程调用OpenFeign**    
+**远程调用OpenFeign**  
+
+**sentinel**
+
+**openfeign-fallback**
 ::: -->
 <!--truncate-->
 
@@ -188,3 +192,49 @@ for (Integer id : group.getList()) {
 :::tip 
 **同一个服务修改port可以启动多次，在启动设置中允许多个运行**  
 ::: -->
+
+
+## sentinel
+
+``` xml title="导入依赖,版本受父项目管理"
+<dependency>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+</dependency>  
+```
+
+``` yml title="yml配置"
+spring: 
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+```
+**在dashboard中设置规则**
+
+## openfeign_fallback
+``` yml title="yml配置" {1}
+在调用失败后调用fallback方法
+feign:
+  sentinel:
+    enabled: true
+```
+
+``` java title="fallback类实现接口" 
+@FeignClient(name="student-service", fallback= StudentFeignClientFallback.class)
+public interface StudentFeignClient { 
+    @GetMapping("/student/getById")
+    ResultVo getById(@RequestParam("id") Integer id);  
+}
+
+@Component
+public class StudentFeignClientFallback implements StudentFeignClient {
+    @Override
+    public ResultVo getById(Integer id) {
+        System.err.println("断路");
+        return ResultVo.fail("请求失败");
+    }
+} 
+```
