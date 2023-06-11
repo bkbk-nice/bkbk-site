@@ -1,0 +1,8 @@
+{
+  "label": "Redis",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Redis doc"
+  }
+}

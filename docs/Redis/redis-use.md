@@ -1,34 +1,8 @@
 ---
-slug: redis
-title:  Redis 
-authors: [bkbk]
-tags: [Redis]
+sidebar_position: 1
 ---
 
-
-
-:::info 目录
-**redis介绍**  
-
-**redis锁**   
-
-**集成springboot**  
-
-**序列化**   
-
-**SpringCache**   
-
-**Redis配置与高级特性**  
-
-**Redis 底层实现**  
-
-**Redis 高并发**  
-
-**Redis 分布式**   
-
-::: -->
-<!--truncate-->
-
+# redis 使用
 
 ##  Redis介绍
 
@@ -366,37 +340,6 @@ public ResultVo delchahe() {
 ## 性能
 ./redis-benchmark -h localhost -p 6379 -c 100 -n 10000
 redis:  
-![redis](./redis.png)   
+![redis](./img/redis.png)   
 mysql:  
-![mysql](./mysql.png)  
- 
-
-## Redis配置与高级特性
-- AOF 与 RDB
-- 发布与订阅
-- 主从模式
-- 哨兵模式
-## Redis 底层实现  
-- SDS —— (实现String)
-- 链表 —— List
-- 压缩列表
-- 哈希表HashTable —— Hash
-- 整数集合 —— Set
-- Zset
-- quicklist —— List
-- listpack 
-## Redis 高并发 
-- 缓存穿透
-- 缓存击穿
-- 缓存雪崩
-- 幂等性实现
-- 延时双删 
-## Redis 分布式
-- edis Cluster与Sentinal（哨兵）
-- Redis Cluster的数据分布
-- Redis Cluster 节点的内部通信机制
-- 高可用与主备切换
-- 集群命令
-- Redis最终一致性实现
-
- 
+![mysql](./img/mysql.png)  

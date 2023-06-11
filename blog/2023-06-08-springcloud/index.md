@@ -151,12 +151,16 @@ student-service:
 ## 远程调用OpenFeign
 ``` js title="调用"
 //第一种 
+//配置类
 @Bean
 @LoadBalanced
 public RestTemplate restTemplate(){
     RestTemplate restTemplate = new RestTemplate();
     return restTemplate;
 }
+@LoadBalanced 注解原理(使用ribbon)
+这里主要的逻辑就是给 RestTemplate 增加拦截器，在请求之前对请求的地址进行替换，或者根据具体的负载策略选择服务地址，然后再去调用
+
 @Autowired
 private RestTemplate restTemplate;
 ResultVo resultVo= restTemplate.getForObject("http://student-service/student/getById?id=1",ResultVo.class);
