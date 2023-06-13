@@ -142,7 +142,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} bkbk-site, Inc. Built with Docusaurus.`,
       },
       prism: {
         //theme: require('prism-react-renderer/themes/dracula'),
@@ -153,20 +153,24 @@ const config = {
       algolia: {
         // contextualSearch: true,
         // The application ID provided by Algolia
-        appId: 'WMEGVVS490', 
+        appId: 'GNSQ2KQL5M', 
+        
+        //appId: 'WMEGVVS490', 
         // Public API key: it is safe to commit it
-        apiKey: '6a4af141234079bc50d2a722b74fee90', 
-        indexName: 'bkbk-netlify', 
+        apiKey: '57cf127d298cfa38c0e6f10677504398', 
+        
+       // apiKey: '6a4af141234079bc50d2a722b74fee90', 
+        indexName: 'bkbk-netlify1', 
         // Optional: see doc section below
         contextualSearch: true, 
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         externalUrlRegex: 'external\\.com|domain\\.com',
   
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
+        // replaceSearchResultPathname: {
+        //   from: '/', // or as RegExp: /\/docs\//
+        //   to: '/',
+        // },
   
         // Optional: Algolia search parameters
         searchParameters: {},
