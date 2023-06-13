@@ -389,7 +389,7 @@ ajax.html
 ### SSM项目搭建
 文件结构：  
   
-![proj](./proj.png)  
+![proj](./img/proj.png)  
 依赖：
 ``` xml
  <dependency>
@@ -743,7 +743,7 @@ public class StudentInterceptor implements HandlerInterceptor {
 
 ```
 效果： 
-![interceptor](./interceptor.png)
+![interceptor](./img/interceptor.png)
 ### RESTFul开发  
 Restful是一个资源定位及资源操作的风格。不是标准也不是协议，只是一种风格。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。  
 
