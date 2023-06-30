@@ -317,3 +317,118 @@ public class LoginFilter extends OncePerRequestFilter {
 
 ```
 
+### 前端接收
+
+```js title=" http.js  axios " 
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios' 
+
+class HttpRequest { 
+    private readonly baseUrl: string; 
+    constructor() { 
+        this.baseUrl = 'http://localhost:9000' 
+    } 
+    getInsideConfig() { 
+        const config = { 
+            baseURL: this.baseUrl,// 所有的请求地址前缀部分(没有后端请求不用写)   
+            timeout: 80000, // 请求超时时间(毫秒) 
+            withCredentials: true,// 异步请求携带cookie  
+           headers: { 
+            // 设置后端需要的传参类型 
+            'Content-Type': 'application/json',
+            // 'token': x-auth-token',//一开始就要token 
+            // 'X-Requested-With': 'XMLHttpRequest', 
+             }, 
+        } 
+        return config 
+    } 
+    // 请求拦截 
+    interceptors(instance: AxiosInstance, url: string | number | undefined) { 
+        instance.interceptors.request.use(config => { 
+            // 添加全局的loading.. 
+            // 请求头携带token 
+            return config 
+        }, (error: any) => { 
+            return Promise.reject(error) 
+        }) 
+        //响应拦截  
+        instance.interceptors.response.use(res => { 
+            //返回数据 
+            const { data } = res 
+           // console.log('返回数据处理', res) 
+            return data 
+        }, (error: any) => { 
+            console.log('error==>', error)  
+            return Promise.reject(error) 
+        }) 
+    } 
+    request(options: AxiosRequestConfig) { 
+        const instance = axios.create() 
+        options = Object.assign(this.getInsideConfig(), options) 
+        this.interceptors(instance, options.url) 
+        return instance(options) 
+    } 
+} 
+const http = new HttpRequest() 
+export default http
+```
+
+```js title="api.tx    post get"
+import http from '../utils/http'
+
+export function getCsclientlistPageByDynamics(params: any) {
+
+        return http.request({
+
+        url: '/cs-service/client/listPageByDynamics',
+
+        method: 'get',
+
+        params,
+
+        headers: {
+            Authorization: localStorage.getItem("token")
+        } 
+    }) 
+}
+
+export function postCsclientaddClient(params: any) { 
+
+    return http.request({
+
+        url: '/cs-service/client/addClient',
+
+        method: 'post',
+
+        data:params ,
+            
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+
+    }) 
+}
+```
+
+
+```js title="调用"
+
+import { editClient, updatePassword, getClient } from "../../api/api"
+
+
+editClient(clientform).then((res: any) => {
+    console.log(res);
+    if (res.status == 0) {
+        ElMessageBox.alert(res.message, '提示', {
+        confirmButtonText: 'OK',
+        })
+        load()
+    } else {
+        ElMessageBox.alert(res.message, '提示', {
+        confirmButtonText: 'OK',
+        })
+    }
+    }).catch(() => {
+         ElMessageBox.alert("服务器异常", '提示', { confirmButtonText: 'OK', })
+});
+
+```
